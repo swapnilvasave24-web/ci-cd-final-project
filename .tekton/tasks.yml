@@ -1,4 +1,3 @@
-```yaml
 apiVersion: tekton.dev/v1
 kind: Task
 metadata:
@@ -38,4 +37,3 @@ spec:
         fi
         pip install nose
         nosetests -v
-```
