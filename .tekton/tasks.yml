@@ -1,17 +1,20 @@
+```yaml
 apiVersion: tekton.dev/v1
 kind: Task
 metadata:
   name: cleanup
 spec:
+  description: Clean the shared workspace before running the CI pipeline.
   workspaces:
     - name: source
   steps:
     - name: remove-files
-      image: alpine:3.19
+      image: alpine:3.20
       script: |
         #!/bin/sh
-        rm -rf /workspace/source/*
-        echo "Workspace cleanup completed"
+        set -eu
+        find /workspace/source -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+        echo "Workspace cleanup completed successfully"
 
 ---
 apiVersion: tekton.dev/v1
@@ -19,6 +22,7 @@ kind: Task
 metadata:
   name: nose
 spec:
+  description: Install dependencies and execute Python unit tests using nose.
   workspaces:
     - name: source
   steps:
@@ -27,10 +31,11 @@ spec:
       workingDir: /workspace/source
       script: |
         #!/bin/sh
-        set -e
+        set -eu
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then
           pip install -r requirements.txt
         fi
         pip install nose
         nosetests -v
+```
