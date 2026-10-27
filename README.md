@@ -1,26 +1,50 @@
-# CI/CD Pipeline Final Project
+# ci-cd-final-project
 
 ## Project Overview
 
-This project focuses on building a Continuous Integration and Continuous Delivery (CI/CD) pipeline using GitHub Actions, Tekton, and OpenShift.
+This project demonstrates a Continuous Integration and Continuous Delivery (CI/CD) pipeline for a Python application using GitHub Actions, Tekton Pipelines, and OpenShift.
+
+## Objectives
+
+- Automate code quality checks using flake8.
+- Run unit tests using nose.
+- Define reusable CI/CD tasks using Tekton.
+- Build a container image using Buildah.
+- Deploy the application on OpenShift.
 
 ## Technologies Used
 
-- **GitHub:** Source code management and version control.
-- **GitHub Actions:** Automated linting and unit testing.
-- **Tekton:** Pipeline tasks and automation.
-- **OpenShift:** Container application deployment and pipeline execution.
-- **flake8:** Python code linting.
-- **nose:** Python unit testing.
+- Python
+- Git and GitHub
+- GitHub Actions
+- flake8
+- nose
+- Tekton Pipelines
+- Buildah
+- Red Hat OpenShift Container Platform
 
-## Project Objectives
+## Project Structure
 
-1. Automate code quality checks using GitHub Actions.
-2. Execute unit tests as part of the CI workflow.
-3. Define cleanup and testing tasks using Tekton.
-4. Run and monitor the pipeline using OpenShift.
-5. Verify application behavior using test results and application logs.
+```text
+ci-cd-final-project/
+├── .github/
+│   └── workflows/
+│       └── workflow.yml
+├── .tekton/
+│   └── tasks.yml
+├── README.md
+└── application source and test files
+```
+
+## CI/CD Workflow
+
+1. Clean the workspace.
+2. Clone the source repository.
+3. Run code linting with flake8.
+4. Execute unit tests with nose.
+5. Build the container image using Buildah.
+6. Deploy the application to OpenShift.
 
 ## Project Status
 
-Repository initialized. Workflow configuration, Tekton tasks, application testing, and OpenShift pipeline execution must be implemented and verified.
+The workflow and pipeline should be validated through actual GitHub Actions and OpenShift runs. Successful execution should be confirmed using the corresponding workflow logs and pipeline run details.
